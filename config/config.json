@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "dev",
+    "database": "skye",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

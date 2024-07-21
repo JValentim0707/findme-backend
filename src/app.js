@@ -7,7 +7,6 @@ app.get('/status', (req, res) => {
   res.send('Esta funcionando tudo normal')
 })
 
-
 app.listen(port, () => {
   console.log(`Server Listening on ${port}`)
 })

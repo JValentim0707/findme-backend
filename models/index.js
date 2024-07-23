@@ -7,7 +7,7 @@ import process from 'process';
 
 
 const basename = path.basename(__filename);
-const env = 'devSystem';
+const env = 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 

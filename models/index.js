@@ -12,7 +12,16 @@ const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
 console.log('db', config)
-const sequelize = new Sequelize(config.database, config.username, config.password, config);
+const sequelize = new Sequelize({
+  host: config.host,
+  username: config.username,
+  password: config.password,
+  database: config.database,
+  dialect: config.dialect,
+  dialectModule: require('pg'),
+  benchmark: true
+})
+// const sequelize = new Sequelize(config.database, config.username, config.password, config);
 
 fs
   .readdirSync(__dirname)

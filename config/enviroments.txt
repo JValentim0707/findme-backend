@@ -1,0 +1,19 @@
+
+DEV DB
+//-----------------------------------------------------
+    "username": "postgres",
+    "password": "findMe123",
+    "database": "skye",
+    "host": "findme-database.cj6uw2ci2axi.us-east-1.rds.amazonaws.com",
+    "dialect": "postgres"
+//-----------------------------------------------------
+
+LOCAL DB
+//-----------------------------------------------------
+    "username": "postgres",
+    "password": "dev",
+    "database": "skye",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+//-----------------------------------------------------
+

@@ -11,7 +11,6 @@ const env = 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
-console.log('db', config)
 const sequelize = new Sequelize({
   host: config.host,
   username: config.username,

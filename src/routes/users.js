@@ -12,7 +12,7 @@ require('dotenv').config()
 import { comparePassword } from "../utils/auth";
 
 // Controller Function
-import { createUser } from "../controllers/user";
+import { createUser, createUserValidationEmail } from "../controllers/user";
 
 const router = express.Router();
 
@@ -38,11 +38,12 @@ router.post("/create", async (req, res, next) => {
 
     if (error) return res.status(400).json({'message': error})
     
-    const dataResp = await createUser(value)
+    const dataUserResp = await createUser(value)
+    const dataRespEmail = createUserValidationEmail({ userId: dataUserResp.id, email: dataUserResp.email })
 
-    console.log('resp', dataResp)
+    console.log('resp', { userId: dataUserResp.user_id, email: dataUserResp.email })
     
-    return res.status(200).json({ message: 'Success Create'});
+    return res.status(200).json({ userId: dataUserResp.id, email: dataUserResp.email });
   } catch (error) {
     console.log('error', error)
   }

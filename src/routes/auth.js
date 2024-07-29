@@ -62,4 +62,25 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
+router.post("/email/validation", async (req, res, next) => {
+  try {
+
+    const schema = Joi.object({
+      email: Joi.string().email().required(),
+      userId: Joi.string().required(),
+      code: Joi.string().required(),
+    })
+
+    const {value, error} = schema.validate(req.body);
+
+    if (error) return res.status(400).json({'message': error})
+    
+    console.log('Deu tudo certo', value)
+
+    return res.status(200)
+  } catch (error) {
+    console.log('error', error)
+  }
+});
+
 module.exports = router;

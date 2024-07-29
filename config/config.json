@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "postgres",
-    "password": "findMe123",
+    "password": "dev",
     "database": "skye",
-    "host": "findme-database.cj6uw2ci2axi.us-east-1.rds.amazonaws.com",
+    "host": "127.0.0.1",
     "dialect": "postgres"
   }
 }

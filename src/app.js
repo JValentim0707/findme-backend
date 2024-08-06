@@ -1,5 +1,4 @@
 import app from './routes/index'
-import { generateHashedPassword, comparePassword } from './utils/auth'
 
 const port = 3030
 

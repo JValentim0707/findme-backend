@@ -60,6 +60,7 @@ const createUserValidationEmail = async (userInfoData) => {
     created_at: new Date(),
     updated_at: new Date()
   }
+  
   const data = UserValidateEmailModel.create(userInfoDataForm)
 }
 

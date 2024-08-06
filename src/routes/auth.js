@@ -13,6 +13,7 @@ import { comparePassword } from "../utils/auth";
 
 // Controller Function
 import { getUser } from "../controllers/user";
+import { validationEmail } from "../controllers/auth";
 
 const router = express.Router();
 
@@ -74,10 +75,12 @@ router.post("/email/validation", async (req, res, next) => {
     const {value, error} = schema.validate(req.body);
 
     if (error) return res.status(400).json({'message': error})
-    
-    console.log('Deu tudo certo', value)
 
-    return res.status(200)
+    const validatedEmail = await validationEmail(value)
+
+    if (!validatedEmail) return res.status(401).json({ message: 'Invalid Code' })
+
+    return res.status(200).json({ message: 'Success'})
   } catch (error) {
     console.log('error', error)
   }

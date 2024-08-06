@@ -5,6 +5,7 @@ import db from '../../models/index.js'
 // Routes
 import authRoute from './auth.js'
 import userRoute from './users.js'
+import uploadRoute from './upload.js'
 
 const app = express()
 
@@ -15,5 +16,6 @@ app.use(express.json())
 
 app.use("/auth", authRoute);
 app.use("/user", userRoute);
+app.use("/upload", uploadRoute);
 
 export default app

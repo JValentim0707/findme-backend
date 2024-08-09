@@ -10,7 +10,7 @@ import uploadRoute from './upload.js'
 const app = express()
 
 // app.use( cors( { origin: 'http://localhost:8080' }))
-app.use(cors({origin: 'https://findme-frontend-omega.vercel.app'}))
+app.use(cors())
 
 app.use(express.json())
 

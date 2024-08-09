@@ -49,7 +49,7 @@ router.post("/login", async (req, res, next) => {
       role: user.role
     }
 
-    return res.json({ accessToken: token, user: resUSer });
+    return res.send(json({ accessToken: token, user: resUSer }));
   } catch (error) {
     console.log('error', error)
   }

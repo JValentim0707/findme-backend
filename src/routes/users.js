@@ -120,7 +120,7 @@ router.put("/accepted", async (req, res, next) => {
         status: value.status
       }
 
-    const resp = await updateApproves(formatedData, userApprovesId)
+    const resp = await updateApproves(formatedData, value.userApprovesId)
     
     return res.status(200).json({ message: 'Success'});
   } catch (error) {

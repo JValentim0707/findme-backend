@@ -6,12 +6,19 @@ const UserModel = db.users
 const UserDetailsModel = db.user_details
 const UserValidateEmailModel = db.user_validates
 
-const getUser = async (email) => {
-  const data = await UserModel.findOne({ where: { email: email } })
+const userController = {}
 
-  if (!data) return null
+userController.get = async (email) => {
+  try {
+    const data = await UserModel.findOne({ where: { email: email } })
 
-  return data.dataValues
+    if (!data) return null
+  
+    return data.dataValues
+    
+  } catch (error) {
+    throw new Error('error:', error)
+  }
 }
 
 const createUser = async (userData) => {
@@ -64,8 +71,4 @@ const createUserValidationEmail = async (userInfoData) => {
   const data = UserValidateEmailModel.create(userInfoDataForm)
 }
 
-export {
-  getUser,
-  createUser,
-  createUserValidationEmail
-}
+export default userController

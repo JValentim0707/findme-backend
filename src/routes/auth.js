@@ -2,24 +2,16 @@ import express from "express";
 import Joi from 'joi'
 import jwt from "jsonwebtoken";
 
-// import validateJWT from '../../middleware/validateJWT'
-
-// import fsPromises from 'fs/promises'
-
 require('dotenv').config()
 
 // Utility Functions
 import { comparePassword } from "../utils/auth";
 
 // Controller Function
-import { getUser } from "../controllers/user";
+import userController from "../controllers/user";
 import { validationEmail } from "../controllers/auth";
 
 const router = express.Router();
-
-// router.get("/", function (req, res) {
-//   res.send("Wiki home page");
-// });
 
 router.post("/login", async (req, res, next) => {
   try {
@@ -33,7 +25,7 @@ router.post("/login", async (req, res, next) => {
 
     if (error) return res.status(400).json({'message': error})
 
-    const user = await getUser(value.email)
+    const user = await userController.get(value.email)
 
     if (!user) return res.status(401).json({'message': 'User Not Found'})
 

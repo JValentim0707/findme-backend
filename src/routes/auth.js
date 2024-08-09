@@ -27,11 +27,11 @@ router.post("/login", async (req, res, next) => {
 
     const user = await userController.get(value.email)
 
-    if (!user) return res.status(401).json({'message': 'User Not Found'})
+    if (!user) return res.status(401).json({ 'message': 'User Not Found' })
 
     const paswordMatch = await comparePassword(value.password, user.password)
     
-    if (!paswordMatch) return res.status(401).json({error: "Authentication Failed"})
+    if (!paswordMatch) return res.status(401).json({ error: "Authentication Failed" })
 
     const token = jwt.sign(
       {

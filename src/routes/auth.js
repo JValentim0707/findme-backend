@@ -42,9 +42,10 @@ router.post("/login", async (req, res, next) => {
       'bacon',
       { expiresIn: '1d' }
     )
-
     const resUSer = {
-      name: user.name,
+      id: user.id,
+      firstName: user.first_name,
+      lastName: user.last_name,
       email: user.email,
       role: user.role
     }

@@ -32,6 +32,41 @@ userController.getAll = async (query) => {
   }
 }
 
+userController.create = async (userData) => {
+  try {
+    const hashedPassword = await generateHashedPassword(userData.password)
+
+    const userFormData = {
+      id: uuidv4(),
+      first_name: userData.firstName,
+      last_name: userData.lastName,
+      email: userData.email,
+      password: hashedPassword,
+      born_date: userData.bornDate,
+      role: userData.role,
+      active: false,
+      created_at: new Date(),
+      updated_at: new Date()
+    }
+
+    const { dataValues } = await UserModel.create(userFormData)
+
+    const userDetailsFormData = {
+      id: uuidv4(),
+      document: userData.document,
+      user_id: dataValues.id,
+      created_at: new Date(),
+      updated_at: new Date()
+    }
+
+    const dataUserDetails = await UserDetailsModel.create(userDetailsFormData)
+
+    return dataValues
+  } catch (error) {
+    return error
+  }
+}
+
 // const createUser = async (userData) => {
 
 //   const hashedPassword = await generateHashedPassword(userData.password)

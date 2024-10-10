@@ -2,14 +2,16 @@ import db from '../../models'
 
 const UserDetailsModel = db.user_details
 
-const updateUserDetails = async (userId, userDetailsData) => {
+const userDetailsController = {}
 
-  const userUpdated = UserDetailsModel.update(userDetailsData, { where: { user_id: userId}})
-
-  return userUpdated
-
+userDetailsController.update = async (userId, userDetailsData) => {
+  try {
+    const data = await UserDetailsModel.update(userDetailsData, { where: { user_id: userId}})
+  
+    return data
+  } catch (error) {
+    throw new Error('error:', error)
+  }
 }
 
-export { 
-  updateUserDetails
-}
+export default userDetailsController

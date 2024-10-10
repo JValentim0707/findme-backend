@@ -3,7 +3,9 @@ import db from '../../models'
 
 const UserApprovesModel = db.user_approves
 
-const createApproves = async (approvesData) => {
+const userApproveController = {}
+
+userApproveController.create = async (approvesData) => {
   try {
     const fomatedData = {
       id: uuidv4(),
@@ -19,20 +21,22 @@ const createApproves = async (approvesData) => {
   }
 }
 
-const updateApproves = async (approvesData, userApprovesId) => {
-  const userApproves = UserApprovesModel.update(approvesData, { where: { id: userApprovesId}})
+userApproveController.update = async (approvesData, userApprovesId) => {
+  try {
+    const userApproves = UserApprovesModel.update(approvesData, { where: { id: userApprovesId}})
 
-  return userApproves
+    return userApproves
+  } catch (error) {
+    console.log(error)
+    
+  }
+
 }
 
-const getAllApproves = async () => {
+userApproveController.getAll = async () => {
   const res = await UserApprovesModel.findAll({ where: { status: 'pending'}, raw: true })
 
   return res
 }
 
-export {
-  createApproves,
-  updateApproves,
-  getAllApproves
-}
+export default userApproveController

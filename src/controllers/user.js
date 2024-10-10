@@ -4,7 +4,6 @@ import { generateHashedPassword } from "../utils/auth";
 
 const UserModel = db.users
 const UserDetailsModel = db.user_details
-const UserValidateEmailModel = db.user_validates
 
 const userController = {}
 
@@ -66,38 +65,6 @@ userController.create = async (userData) => {
     return error
   }
 }
-
-// const createUser = async (userData) => {
-
-//   const hashedPassword = await generateHashedPassword(userData.password)
-
-//   const userFormData = {
-//     id: uuidv4(),
-//     first_name: userData.firstName,
-//     last_name: userData.lastName,
-//     email: userData.email,
-//     password: hashedPassword,
-//     born_date: userData.bornDate,
-//     role: userData.role,
-//     active: false,
-//     created_at: new Date(),
-//     updated_at: new Date()
-//   }
-
-//   const { dataValues } = await UserModel.create(userFormData)
-
-//   const userDetailsFormData = {
-//     id: uuidv4(),
-//     document: userData.document,
-//     user_id: dataValues.id,
-//     created_at: new Date(),
-//     updated_at: new Date()
-//   }
-
-//    const dataUserDetails = await UserDetailsModel.create(userDetailsFormData)
-
-//   return dataValues
-// }
 
 // const createUserValidationEmail = async (userInfoData) => {
 //   const code = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000

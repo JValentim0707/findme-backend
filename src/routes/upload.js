@@ -10,7 +10,7 @@ import stream from 'stream'
 import userApproveController from "../controllers/userApproves";
 
 // // Controller Function
-import credFile from '../config/cred.json'
+// import credFile from '../config/cred.json'
 const CLIENT_EMAIL = process.env["CLIENT_EMAIL"]
 const PRIVATE_KEY = process.env["PRIVATE_KEY"]
 

@@ -60,7 +60,7 @@ router.post("/create", async (req, res, next) => {
     if (error) return res.status(400).json({'message': error})
     
     const dataUserResp = await userController.create(value)
-    const dataRespEmail = userValidateController.create({ userId: dataUserResp.id, email: dataUserResp.email })
+    const dataRespEmail = await userValidateController.create({ userId: dataUserResp.id, email: dataUserResp.email })
     
     return res.status(200).json({ userId: dataUserResp.id, email: dataUserResp.email });
   } catch (error) {
